@@ -47,6 +47,14 @@ Simple Todo list in python3.\n
 """)
 
 
+def number_tasks():
+    """Enumerate tasks for later manipulation."""
+    with open(filename) as f:
+        print(f.readline() + f.readline())
+        for counter, value in enumerate(f.read().splitlines()[1:], 1):
+            print(counter, value[2:])
+
+
 if check_if_exists() == False:
     create_new_file()
     print("Here's the controls:")
@@ -67,6 +75,8 @@ while active:
         read_file()
     elif cmd == 'd':
         read_file()
+    elif cmd == 'r':
+        number_tasks()
     elif cmd == '?':
         print_help()
     else:
