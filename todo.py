@@ -41,8 +41,8 @@ def print_help():
     print("""
 Simple Todo list in python3.\n
 \t?\tPrints this help
-\ta\tAdds new task
-\tr\tReads the tasks
+\ta\tAdds new task (Default)
+\td\tDisplays the tasks
 \tq\tQuit
 """)
 
@@ -65,8 +65,9 @@ while active:
         task = input("\nNew task: ")
         add_task(task)
         read_file()
-    elif cmd == 'r':
+    elif cmd == 'd':
         read_file()
     elif cmd == '?':
         print_help()
-
+    else:
+        add_task(cmd.strip())
