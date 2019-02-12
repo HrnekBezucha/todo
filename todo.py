@@ -62,6 +62,10 @@ if check_if_exists() == False:
 
 read_file()
 
+# Todo:
+# Copy the contents in a list and work with that instead!
+# This is stupidly overcomplicated..
+
 while active:
     cmd = input("> ")
     if cmd == 'q':
