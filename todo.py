@@ -3,9 +3,6 @@
 Simple todo list manager for a file in plain text.
 """
 
-# Changes:
-# Creating a list of tasks and working with that.
-# Changing all existing functions to accomodate this approach.
 # Still work in progress.
 
 symbol = "*"
@@ -71,12 +68,14 @@ Simple Todo list in python3.\n
 \t?\tPrints this help
 \ta\tAdds new task (Default)
 \td\tDisplays the tasks
+\tn\tNumber tasks
 \tq\tQuit
 """)
 
 
 def number_tasks():
     """Prints numbered tasks for later manipulation."""
+    print(header)
     for i, j in enumerate(tasks, start=1):
         print(i, j)
 
@@ -89,29 +88,26 @@ if check_if_exists() == False:
 
 tasks = load_file(filename)
 tasks = simplify_list(tasks)
-# loop here
+print_tasks()
+
+while active:
+    cmd = input("> ")
+    if cmd == 'q':
+        active = False
+    elif len(cmd.strip()) < 1:
+        input("Bye.")
+        active = False
+    elif cmd == 'a':
+        task = input("\nNew task: ")
+        add_task(task)
+        print_tasks()
+    elif cmd == 'd':
+        print_tasks()
+    elif cmd == 'n':
+        number_tasks()
+    elif cmd == '?':
+        print_help()
+    else:
+        add_task(cmd.strip())
+
 save_file(filename)
-
-# Todo:
-# Copy the contents in a list and work with that instead!
-# This is stupidly overcomplicated..
-
-# while active:
-#     cmd = input("> ")
-#     if cmd == 'q':
-#         active = False
-#     elif len(cmd.strip()) < 1:
-#         input("Bye.")
-#         active = False
-#     elif cmd == 'a':
-#         task = input("\nNew task: ")
-#         add_task(task)
-#         read_file()
-#     elif cmd == 'd':
-#         read_file()
-#     elif cmd == 'r':
-#         number_tasks()
-#     elif cmd == '?':
-#         print_help()
-#     else:
-#         add_task(cmd.strip())
