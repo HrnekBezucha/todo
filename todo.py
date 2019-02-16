@@ -64,7 +64,10 @@ def add_task(task):
 def remove_task(number):
     """Remove a task by number."""
     #tasks.pop(number)
-    del tasks[number]
+    try:
+        del tasks[number]
+    except IndexError:
+        print("There isn't", number + 1, "tasks.")
 
 def print_help():
     """Prints help."""
@@ -113,8 +116,11 @@ while active:
         number_tasks()
     elif cmd == 'r':
         number_tasks()
-        task = int(input("\nNumber of task to remove: "))
-        remove_task(task - 1)
+#       To be cleaned-up
+        try: task = int(input("\nNumber of task to remove: "))
+        except ValueError:
+            print("Please enter a number of a task.")
+        else: remove_task(task - 1)
     elif cmd == '?':
         print_help()
     else:
