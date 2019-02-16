@@ -61,6 +61,10 @@ def add_task(task):
     """Append new task to the list."""
     tasks.append(task)
 
+def remove_task(number):
+    """Remove a task by number."""
+    tasks.pop(number)
+
 def print_help():
     """Prints help."""
     print("""
@@ -69,6 +73,7 @@ Simple Todo list in python3.\n
 \ta\tAdds new task (Default)
 \td\tDisplays the tasks
 \tn\tNumber tasks
+\tr\tRemove task by number
 \tq\tQuit
 """)
 
@@ -105,6 +110,10 @@ while active:
         print_tasks()
     elif cmd == 'n':
         number_tasks()
+    elif cmd == 'r':
+        number_tasks()
+        task = int(input("\nNumber of task to remove: "))
+        remove_task(task - 1)
     elif cmd == '?':
         print_help()
     else:
