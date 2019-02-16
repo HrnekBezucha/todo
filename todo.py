@@ -118,8 +118,7 @@ while active:
         number_tasks()
 #       To be cleaned-up
         try: task = int(input("\nNumber of task to remove: "))
-        except ValueError:
-            print("Please enter a number of a task.")
+        except ValueError: print("Please enter a number of a task.")
         else: remove_task(task - 1)
     elif cmd == '?':
         print_help()
