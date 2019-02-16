@@ -63,7 +63,8 @@ def add_task(task):
 
 def remove_task(number):
     """Remove a task by number."""
-    tasks.pop(number)
+    #tasks.pop(number)
+    del tasks[number]
 
 def print_help():
     """Prints help."""
